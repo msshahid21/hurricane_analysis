@@ -56,7 +56,7 @@ def construct_dict(names, months, years, max_sustained_winds, areas_affected, da
 # write your construct hurricane by year dictionary function here:
 def construct_year_dict(hurricane_dict):
     '''
-    Returns a dictionary object where hurricane information is organized by year as key
+    Returns a dictionary object where hurricane information is organized by year as key.
     '''
     year_dict = {}
     for info in hurricane_dict.values():
@@ -70,7 +70,7 @@ def construct_year_dict(hurricane_dict):
 # write your count affected areas function here:
 def count_affected_areas(hurricane_dict):
     '''
-    Return a dictionary object containing the number of times an area in the Atlantic has been affected
+    Return a dictionary object containing the number of times an area in the Atlantic has been affected.
     '''
     areas_dict = {}
     for info in hurricane_dict.values():
@@ -83,12 +83,19 @@ def count_affected_areas(hurricane_dict):
     return areas_dict
 
 # write your find most affected area function here:
+def most_affected_area(affected_areas_dict):
+    '''
+    Return a list containing the name of the most affected area and the number of times it was hit.
+    '''
+    most_affected = ''
+    count_most_affected = 0
 
+    for area in affected_areas_dict.keys():
+        if affected_areas_dict.get(area) > count_most_affected:
+            count_most_affected = affected_areas_dict.get(area)
+            most_affected = area
 
-
-
-
-
+    return [most_affected, count_most_affected]
 
 # write your greatest number of deaths function here:
 
@@ -124,11 +131,11 @@ def count_affected_areas(hurricane_dict):
 
 # Function Tests
 #print(update_damages(damages))
-
 #hurricane_dict = construct_dict(names, months, years, max_sustained_winds, areas_affected, damages, deaths)
 #print(hurricane_dict)
 #print('\n')
-
 #print(construct_year_dict(hurricane_dict))
-
-#print(count_affected_areas(hurricane_dict))
+#affected_areas_dict = count_affected_areas(hurricane_dict)
+#print(affected_areas_dict)
+#print('\n')
+#print(most_affected_area(affected_areas_dict))
