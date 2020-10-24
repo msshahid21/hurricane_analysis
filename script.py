@@ -148,12 +148,22 @@ def construct_mortality_dict(hurricane_dict):
     return mortality_dict
 
 # write your greatest damage function here:
+def greatest_damage(hurricane_dict):
+    '''
+    Return a list containing the name of the hurricane that caused the most damage and the cost of the damage.
+    '''
+    m_damageamount = 0.0        # variable containing the highest recorded hurricane damage value
+    m_damage = ''               # variable containing the name of the hurricane that cause the most damage
 
+    for info in hurricane_dict.values():
+        try:
+            if info['Damage'] > m_damageamount:
+                m_damageamount = info['Damage']
+                m_damage = info['Name']
+        except:
+            continue
 
-
-
-
-
+    return [m_damage, m_damageamount]
 
 # write your catgeorize by damage function here:
 
@@ -175,3 +185,4 @@ def construct_mortality_dict(hurricane_dict):
 #print(most_affected_area(affected_areas_dict))
 #print(most_deaths(hurricane_dict))
 #print(construct_mortality_dict(hurricane_dict))
+#print(greatest_damage(hurricane_dict))
