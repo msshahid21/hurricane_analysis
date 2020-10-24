@@ -56,7 +56,7 @@ def construct_dict(names, months, years, max_sustained_winds, areas_affected, da
 # write your construct hurricane by year dictionary function here:
 def construct_year_dict(hurricane_dict):
     '''
-    Returns a new dictionary object where hurricane information is organized by year as key
+    Returns a dictionary object where hurricane information is organized by year as key
     '''
     year_dict = {}
     for info in hurricane_dict.values():
@@ -68,12 +68,19 @@ def construct_year_dict(hurricane_dict):
     return year_dict
 
 # write your count affected areas function here:
-
-
-
-
-
-
+def count_affected_areas(hurricane_dict):
+    '''
+    Return a dictionary object containing the number of times an area in the Atlantic has been affected
+    '''
+    areas_dict = {}
+    for info in hurricane_dict.values():
+        affected_areas = info['Areas Affected']
+        for area in affected_areas:
+            if area not in areas_dict:
+                areas_dict[area] = 1
+            else:
+                areas_dict[area] += 1
+    return areas_dict
 
 # write your find most affected area function here:
 
@@ -120,6 +127,8 @@ def construct_year_dict(hurricane_dict):
 
 #hurricane_dict = construct_dict(names, months, years, max_sustained_winds, areas_affected, damages, deaths)
 #print(hurricane_dict)
-
 #print('\n')
+
 #print(construct_year_dict(hurricane_dict))
+
+#print(count_affected_areas(hurricane_dict))
