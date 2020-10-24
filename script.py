@@ -42,6 +42,9 @@ def construct_dict(names, months, years, max_sustained_winds, areas_affected, da
     Returns a dictionary with the keys of the dictionary being the names of the hurricanes and the
     values of the dictionary being a dictionary containing information of the hurricane.
     '''
+    # Update damages values
+    updated_damages = update_damages(damages)
+
     hurricane_dict = {}
     for i, name in enumerate(names):
         hurricane_dict[name] = {'Name': name,
@@ -49,7 +52,7 @@ def construct_dict(names, months, years, max_sustained_winds, areas_affected, da
                                 'Year': years[i],
                                 'Max Sustained Wind': max_sustained_winds[i],
                                 'Areas Affected': areas_affected[i],
-                                'Damage': damages[i],
+                                'Damage': updated_damages[i],
                                 'Deaths': deaths[i]}
     return hurricane_dict
 
