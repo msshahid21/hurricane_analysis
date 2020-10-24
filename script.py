@@ -114,12 +114,35 @@ def most_deaths(hurricane_dict):
     return [m_death, m_deathcount]
 
 # write your catgeorize by mortality function here:
+def construct_mortality_dict(hurricane_dict):
+    '''
+    Return a dictionary containing the hurricanes ordered by a mortality scale.
+    '''
+    # Creating initial mortality dictionary
+    mortality_dict = {0: [],
+                      1: [],
+                      2: [],
+                      3: [],
+                      4: [],
+                      5: []}
 
+    # Categorization
+    for info in hurricane_dict.values():
+        deathcount = info['Deaths']
+        if deathcount <= 0:
+            mortality_dict[0].append(info)
+        elif deathcount <= 100:
+            mortality_dict[1].append(info)
+        elif deathcount <= 500:
+            mortality_dict[2].append(info)
+        elif deathcount <= 1000:
+            mortality_dict[3].append(info)
+        elif deathcount <= 10000:
+            mortality_dict[4].append(info)
+        else:
+            mortality_dict[5].append(info)
 
-
-
-
-
+    return mortality_dict
 
 # write your greatest damage function here:
 
@@ -148,3 +171,4 @@ def most_deaths(hurricane_dict):
 #print('\n')
 #print(most_affected_area(affected_areas_dict))
 #print(most_deaths(hurricane_dict))
+#print(construct_mortality_dict(hurricane_dict))
