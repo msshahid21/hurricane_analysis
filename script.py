@@ -160,18 +160,48 @@ def greatest_damage(hurricane_dict):
             if info['Damage'] > m_damageamount:
                 m_damageamount = info['Damage']
                 m_damage = info['Name']
-        except:
+        except TypeError:
             continue
 
     return [m_damage, m_damageamount]
 
 # write your catgeorize by damage function here:
+def construct_damage_dict(hurricane_dict):
+    '''
+    Return a dictionary containing hurricanes categorized by the level of damage they caused.
+    '''
+    # Creating initial damage dictionary
+    damage_dict = {0: [],
+                   1: [],
+                   2: [],
+                   3: [],
+                   4: [],
+                   5: []}
 
+    # Categorization
+    for info in hurricane_dict.values():
+        damage = info['Damage']
 
+        try:
+            float(damage)
+        except ValueError:
+            damage_dict[0].append(info)
+            continue
 
+        if damage <= 0:
+            damage_dict[0].append(info)
+        elif damage <= 100000000:
+            damage_dict[1].append(info)
+        elif damage <= 1000000000:
+            damage_dict[2].append(info)
+        elif damage <= 10000000000:
+            damage_dict[3].append(info)
+        elif damage <= 50000000000:
+            damage_dict[4].append(info)
+        else:
+            damage_dict[5].append(info)
 
-
-
+    return damage_dict
 
 # Function Tests
 #print(update_damages(damages))
@@ -186,3 +216,4 @@ def greatest_damage(hurricane_dict):
 #print(most_deaths(hurricane_dict))
 #print(construct_mortality_dict(hurricane_dict))
 #print(greatest_damage(hurricane_dict))
+#print(construct_damage_dict(hurricane_dict))
