@@ -98,12 +98,20 @@ def most_affected_area(affected_areas_dict):
     return [most_affected, count_most_affected]
 
 # write your greatest number of deaths function here:
+def most_deaths(hurricane_dict):
+    '''
+    Return a list containing the name of the hurricane the caused the most number of deaths and its deathcount.
+    '''
+    m_death = ''                # variable containing the name of the most deadly hurricane
+    m_deathcount = 0            # variable containing the value of the deathcount for the most deadly hurricane
 
+    for name in hurricane_dict.keys():
+        deathcount = hurricane_dict.get(name)['Deaths']
+        if deathcount > m_deathcount:
+            m_death = name
+            m_deathcount = deathcount
 
-
-
-
-
+    return [m_death, m_deathcount]
 
 # write your catgeorize by mortality function here:
 
@@ -139,3 +147,4 @@ def most_affected_area(affected_areas_dict):
 #print(affected_areas_dict)
 #print('\n')
 #print(most_affected_area(affected_areas_dict))
+#print(most_deaths(hurricane_dict))
