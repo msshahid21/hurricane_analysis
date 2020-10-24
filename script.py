@@ -22,21 +22,9 @@ deaths = [90,4000,16,3103,179,184,408,682,5,1023,43,319,688,259,37,11,2068,269,3
 # write your update damages function here:
 def update_damages(damages):
     '''
-    Description
-    -----------
     Returns a list equal to damages list with elements converted into float
     equivalents.
-
-    Parameters
-    ----------
-    damages: list object containing damages incurred from Cat-5 hurricanes
-
-    Returns
-    -------
-    list object with damages list elements updated with float equivalent values
-    except for non-float values.
     '''
-
     updated_damages = []
 
     for item in damages:
@@ -49,12 +37,21 @@ def update_damages(damages):
     return updated_damages
 
 # write your construct hurricane dictionary function here:
-
-
-
-
-
-
+def construct_dict(names, months, years, max_sustained_winds, areas_affected, damages, deaths):
+    '''
+    Returns a dictionary with the keys of the dictionary being the names of the hurricanes and the
+    values of the dictionary being a dictionary containing information of the hurricane.
+    '''
+    hurricane_dict = {}
+    for i, name in enumerate(names):
+        hurricane_dict[name] = {'Name': name,
+                                'Month': months[i],
+                                'Year': years[i],
+                                'Max Sustained Wind': max_sustained_winds[i],
+                                'Areas Affected': areas_affected[i],
+                                'Damage': damages[i],
+                                'Deaths': deaths[i]}
+    return hurricane_dict
 
 # write your construct hurricane by year dictionary function here:
 
@@ -113,4 +110,5 @@ def update_damages(damages):
 
 
 # Function Tests
-print(update_damages(damages))
+#print(update_damages(damages))
+#print(construct_dict(names, months, years, max_sustained_winds, areas_affected, damages, deaths))
