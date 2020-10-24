@@ -20,12 +20,33 @@ damages = ['Damages not recorded', '100M', 'Damages not recorded', '40M', '27.9M
 deaths = [90,4000,16,3103,179,184,408,682,5,1023,43,319,688,259,37,11,2068,269,318,107,65,19325,51,124,17,1836,125,87,45,133,603,138,3057,74]
 
 # write your update damages function here:
+def update_damages(damages):
+    '''
+    Description
+    -----------
+    Returns a list equal to damages list with elements converted into float
+    equivalents.
 
+    Parameters
+    ----------
+    damages: list object containing damages incurred from Cat-5 hurricanes
 
+    Returns
+    -------
+    list object with damages list elements updated with float equivalent values
+    except for non-float values.
+    '''
 
+    updated_damages = []
 
-
-
+    for item in damages:
+        if item[-1] == 'B':
+            updated_damages.append(float(item[:-1]) * 1000000000)
+        elif item[-1] == 'M':
+            updated_damages.append(float(item[:-1]) * 1000000)
+        else:
+            updated_damages.append(item)
+    return updated_damages
 
 # write your construct hurricane dictionary function here:
 
@@ -84,3 +105,12 @@ deaths = [90,4000,16,3103,179,184,408,682,5,1023,43,319,688,259,37,11,2068,269,3
 
 
 # write your catgeorize by damage function here:
+
+
+
+
+
+
+
+# Function Tests
+print(update_damages(damages))
